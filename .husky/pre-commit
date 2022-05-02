@@ -1,0 +1,20 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo '=== Linting, Formatting and Testing before committing ==='
+
+
+# Check tsconfig standards
+yarn tsc || (
+    echo '❌❌❌ Failed Type check. ❌❌❌'
+    false;
+)
+
+# Check eslint, prettier and test before commit
+yarn lint-staged || (
+    echo '❌❌❌ Failed lint-staged check. ❌❌❌'
+    false;
+)
+
+# If everything passes... Now we can commit
+echo '✅✅✅ Linting, Styling and Testing passed... This changes will be committed now. ✅✅✅'

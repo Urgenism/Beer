@@ -1,0 +1,98 @@
+@use '../../../assets/scss/abstracts/mixins';
+@use '../../../assets/scss/abstracts/variable';
+
+.beer {
+  display: flex;
+  padding: 1rem 1.4rem;
+  box-shadow: 0px 1px 6px 1px rgb(204 204 204 / 60%);
+  border-radius: 6px;
+  height: 100%;
+  transition: all 0.2s;
+
+  @include mixins.mq('sm') {
+    padding: 1.5rem 3rem;
+  }
+
+  &:hover {
+    background-color: variable.$clr-lightBlue;
+    cursor: pointer;
+  }
+
+  &__img-wrap {
+    height: 100px;
+    flex: 0 0 80px;
+    display: flex;
+    position: relative;
+
+    @include mixins.mq('sm') {
+      flex: 0 0 90px;
+    }
+
+    img {
+      max-width: none;
+      max-height: 100%;
+      width: auto;
+    }
+
+    .img-tooltip {
+      padding: 0.3rem;
+      border-radius: 2px;
+      width: 130px;
+      background-color: #333;
+      color: variable.$clr-white;
+      text-align: center;
+      opacity: 0;
+      scale: 0;
+      position: absolute;
+      bottom: calc(100% + 12px);
+      left: 50%;
+      transform-origin: 0 100%;
+      transform: scale(0.5) translate(-50%, 30px);
+      transition: all 0.2s;
+
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-top: 10px solid variable.$clr-black;
+      }
+    }
+
+    img:hover + .img-tooltip {
+      opacity: 1;
+      scale: 1;
+      transform: scale(1) translate(-50%, 0);
+    }
+  }
+
+  &__img {
+    position: relative;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  &__tagline {
+    display: block;
+    margin-bottom: 0.2rem;
+    color: variable.$clr-gold;
+    font-weight: 600;
+  }
+
+  &__desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

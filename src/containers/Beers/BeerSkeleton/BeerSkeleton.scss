@@ -1,0 +1,24 @@
+@use '../../../assets/scss/abstracts/mixins';
+
+.beer-skeleton {
+  display: flex;
+  padding: 1rem;
+  box-shadow: 0px 1px 6px 1px rgb(204 204 204 / 60%);
+  border-radius: 6px;
+
+  @include mixins.mq('sm') {
+    padding: 1.5rem 3rem;
+  }
+
+  &__img {
+    flex: 0 0 80px;
+
+    @include mixins.mq('sm') {
+      flex: 0 0 100px;
+    }
+  }
+
+  &__body {
+    flex: 1 1 auto;
+  }
+}

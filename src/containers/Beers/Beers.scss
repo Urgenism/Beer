@@ -1,0 +1,72 @@
+@use '../../assets/scss/abstracts/mixins';
+@use '../../assets/scss/abstracts/variable';
+
+.beers {
+  padding: 1rem;
+
+  @include mixins.mq('sm') {
+    padding: 4rem;
+  }
+
+  &__title {
+    color: variable.$clr-gray;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+
+    @include mixins.mq('sm') {
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    }
+  }
+
+  &__btn-wrap {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 auto;
+    background: none;
+    border: none;
+    color: variable.$clr-blue;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+
+    svg {
+      margin-left: 0.2rem;
+      transition: all 0.2s;
+    }
+
+    &:hover {
+      text-decoration: underline;
+
+      svg {
+        animation: bounceUpDown 0.7s cubic-bezier(0.37, 0.06, 0.84, 1.03) infinite;
+      }
+    }
+  }
+}
+
+@keyframes bounceUpDown {
+  0% {
+    transform: translateY(10%);
+  }
+
+  50% {
+    transform: translateY(-10%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
